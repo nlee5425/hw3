@@ -14,6 +14,7 @@ using namespace std;
  *  Pointer to the linked list (or NULL if empty or the
  *  file is invalid)
  */
+
 Node* readList(const char* filename);
 
 /**
@@ -27,6 +28,12 @@ void print(Node* head);
  */
 void dealloc(Node* head);
 
+
+struct tester{ //the test for the filter 
+    bool operator()(int c) {
+        return ( c % 3 == 0); //filtering out numbers that are divisible by 2
+    }
+};
 
 Node* readList(const char* filename)
 {
@@ -69,8 +76,6 @@ void dealloc(Node* head)
 
 
 
-
-
 int main(int argc, char* argv[])
 {
     if(argc < 2) {
@@ -84,12 +89,19 @@ int main(int argc, char* argv[])
     Node* head = readList(argv[1]);
     cout << "Original list: ";
     print(head);
+		
+		//test for part1 linked list
+	Node *small = nullptr; // new small node
+	Node *large = nullptr; //new large node
+	int pivot = 8;
+	llpivot(head, small, large, pivot); //head is already in read file
+    print (small); //printing out both the nodes
+    print (large);
 
+    tester pred; //setting the pred condition
+    Node* newlist = llfilter(small , pred);
+    print(newlist);
     // Test out your linked list code
-
-
-
-    
     return 0;
 
 }
