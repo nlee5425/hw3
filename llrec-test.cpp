@@ -91,17 +91,23 @@ int main(int argc, char* argv[])
     print(head);
 		
 		//test for part1 linked list
-	Node *small = nullptr; // new small node
-	Node *large = nullptr; //new large node
-	int pivot = 8;
-	llpivot(head, small, large, pivot); //head is already in read file
+		//Node *small = nullptr; // new small node
+		//Node *large = nullptr; //new large node
+        Node* smallsec = new Node( 10, nullptr);
+        Node* small = new Node(8, smallsec);
+        Node* largesec = new Node ( 3, nullptr);
+        Node* large = new Node (2 , largesec);
+        
+		int pivot = 8;
+		llpivot(head, small, large, pivot); //head is already in read file
     print (small); //printing out both the nodes
     print (large);
 
     tester pred; //setting the pred condition
     Node* newlist = llfilter(small , pred);
     print(newlist);
-    // Test out your linked list code
+   // Test out your linked list code
+
     return 0;
 
 }
