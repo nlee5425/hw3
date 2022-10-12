@@ -64,14 +64,7 @@ public:
    */
   size_t size() const;
 
-	void print() const; //personal print function for test case purposes
-
-	// template <typename T> struct greater {
-	// 	bool operator() (const T& x, const T& y) const {return x>y;}
-	// };
-	// template <typename T> struct less {
-	// 	bool operator() (const T& x, const T& y) const {return x>y;}
-	// };
+	//void print() const; //personal print function for test case purposes
 
 private:
   /// Add whatever helper functions and data members you need below
@@ -125,21 +118,11 @@ void Heap<T,PComparator>::pop() //replace bottom with top element
     throw std::underflow_error("Empty!");
   }
 	else {
-		// std::cout <<"Size: " << data.size() << std::endl;
-		// std::cout <<"Before Swap" << std::endl << "-----------" <<std::endl;
-		// std::cout << this->data[0] << std::endl<< this->data[this->data.size() - 1] << std::endl;
-		// std::cout <<"End Before Swap" << std::endl << "-----------" <<std::endl;
 		std::swap(this->data[0], this->data[data.size()-1]);
-		// std::cout <<"Swap" << std::endl << "-----------" <<std::endl;
-		// std::cout << this->data[0] << std::endl<< this->data[this->data.size() - 1] << std::endl;
-		// std::cout <<"End Swap" << std::endl << "-----------" <<std::endl;
-		this->data.pop_back();
-		// std::cout <<"Size after pop: " << data.size() << std::endl;
-		// std::cout << "First Index after pop: " << this->data[0] <<std::endl;
+		this->data.pop_back();	
 		if ( this->data.size() != 1 ) {
 			unsigned int i = 0;
 			while ( i < this->data.size()) { //look for smallest child, check if current index is greater, if not swap, if yes, leave at location
-				//std::cout << "Entered in while loop" << std::endl;
 				unsigned int gindex = 0; //saves which is greatest index
 				int childamt = 0;
 				if ( this->data.size() < (i *heapsize + 2)) { //if the size is less than, no children
@@ -169,18 +152,7 @@ void Heap<T,PComparator>::pop() //replace bottom with top element
 					}
 				}
 				if ( comp(this->data[gindex] , this->data[i]) == true) { //checking if the greatest value in the children, is greater than current index
-					// std::cout <<"-----------"  << std::endl << "Before Swap 2"<<std::endl;
-					// std::cout << this->data[0] << std::endl<< this->data[this->data.size() - 1] << std::endl;
-					// std::cout <<"End Before Swap 2" << std::endl << "-----------" <<std::endl;
-					// std::cout << "I: " << i << std::endl;
-					// std::cout << "Gindex: " << gindex << std::endl;
 					std::swap(this->data[i] , this->data[gindex]);
-					// std::cout <<"-----------" << std::endl <<"Swap 2" <<std::endl;
-					// std::cout << this->data[0] << std::endl<< this->data[this->data.size() - 1] << std::endl;
-					// std::cout <<"End Swap 2" << std::endl << "-----------" <<std::endl;
-					// std::cout <<"Swap 2" << std::endl << "-----------" <<std::endl;
-					// std::cout << this->data[i] << std::endl<< this->data[gindex] << std::endl;
-					// std::cout <<"End Swap 2" << std::endl << "-----------" <<std::endl;
 					i = gindex;
 				}
 				else { //if current index is not greater than child
@@ -210,13 +182,13 @@ void Heap<T, PComparator>::push(const T& item) {
 
 }
 
-template <typename T, typename PComparator>
-void Heap<T,PComparator>::print() const {
-	std::cout << "----------" << std::endl;
-	for (unsigned int i = 0 ;  i < this->data.size() ; ++i ) {
-		std::cout << this->data[i] << std::endl;
-	}
-}
+// template <typename T, typename PComparator>
+// void Heap<T,PComparator>::print() const {
+// 	std::cout << "----------" << std::endl;
+// 	for (unsigned int i = 0 ;  i < this->data.size() ; ++i ) {
+// 		std::cout << this->data[i] << std::endl;
+// 	}
+// }
 
 #endif
 
