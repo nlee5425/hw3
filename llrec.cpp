@@ -17,10 +17,12 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot) {
 	if (value <= pivot) { //if less, add to smaller node
 		head->next = smaller;
 		smaller = head;
+		head = nullptr;
 	}
 	else { //if greater, add to larger node
 		head->next = larger;
 		larger = head;
+		head = nullptr;
 	}
 }
 
